@@ -1,8 +1,8 @@
 class Car:
-    def __init__(self, make_model = "None Assigned", num_doors = 4, max_passengers = 5):
-        self.make_model = make_model
-        self.num_doors = num_doors
-        self.max_passengers = max_passengers 
+    def __init__(self):
+        self.make_model = "None Assigned"
+        self.num_doors = 4
+        self.max_passengers = 5
 
     def setMakeModel(self,make_model):
         self.make_model = make_model
