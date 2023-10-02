@@ -13,5 +13,6 @@ class GasolineCar(Car.Car):
 
 if __name__ == "__main__":
     g1 = GasolineCar()
+    print(g1.get_gas_tank_size())
     g1.set_gas_tank_size(40)
     print(g1.get_gas_tank_size())
