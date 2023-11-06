@@ -1,18 +1,23 @@
 import Car
+class GasolineCar(Car.Car): 
 
-class GasolineCar(Car.Car):
-    def __init__(self, make_model = "None assigned", num_doors = 4, max_passengers = 5, gas_tank_size = -1):
-        super().__init__(make_model, num_doors, max_passengers)
-        self.gas_tank_size = gas_tank_size
+    def __init__(self,makeAndModel:str = "none assigned", numberOfDoors:int = 4, maximumNumberOfPassengers:int = 5, gasTankSize:int = -1):
+        super().__init__(makeAndModel,numberOfDoors,maximumNumberOfPassengers)
+        self.gasTankSize = gasTankSize
 
-    def get_gas_tank_size(self):
-        return self.gas_tank_size
+     #getter methods
 
-    def set_gas_tank_size(self, size):
-        self.gas_tank_size = size
+    def getGasTankSize(self) -> int: 
+        return(self.gasTankSize)
+     
+    #setters
 
+    def setGasTankSize(self,gasTankSize):
+        self.gasTankSize = gasTankSize
+
+    def __str__(self):
+        stringToReturn = " make model: " + self.makeModel + "\n number of doors: " + str(self.numDoors) + "\n max passengers: " + str(self.maxPassengers) + "\n gas tank size: " + str(self.gasTankSize)
+        return(stringToReturn)
+    
 if __name__ == "__main__":
-    g1 = GasolineCar()
-    print(g1.get_gas_tank_size())
-    g1.set_gas_tank_size(40)
-    print(g1.get_gas_tank_size())
+    pass
