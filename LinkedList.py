@@ -1,44 +1,112 @@
-Question 1
-Synchonizer: Eshaan Vaikunth
-Liason: Ava Sokolosky
-Reflector: Tien Nguyen
+from Node import Node
 
 
-Question 2.2 
-2.2.1 
-(type yes or no)
+class LinkedList:
+    def __init__(self):
+        self.head = None 
+        self.tail = None 
+        self.size = 0
 
-yes 
+    def add(self, item:object):
+        newNode = Node(item)
+        if(self.size == 0):
+            self.head = newNode
+            self.tail = newNode
+        else:
+            curr = self.tail
+            self.tail = newNode
+            curr.setNext(newNode)
+            newNode.setPrevious(curr)
+        self.size+=1
 
-2.2.2
-(type your answer here)
+    def insert(self,index,item):
+        newNode = Node(item)
+        curr = self.head
+        if(self.size > 0 and index <= self.size):
+            if(index == 0):
+                self.head = newNode
+                curr.setPrevious(newNode)
+                newNode.setNext(curr)
+            elif(index == self.size):
+                curr = self.tail
+                self.tail = newNode
+                curr.setNext(newNode)
+                newNode.setPrevious(curr)
+                
+            else:
+                i = 0
+                while(i < index):
+                    curr = curr.getNext()
+                    i+=1
+                curr.getPrevious().setNext(newNode)
+                newNode.setPrevious(curr.getPrevious())
+                curr.setPrevious(newNode)
+                newNode.setNext(curr)
+            self.size+=1
+    
+    def delete(self,index):
+        if(self.size > 0 and index < self.size):
+            x = 0
+            current = self.head
+            if(index == 0):
+                self.size = self.size - 1
+                if(self.size != 0):
+                    current.getNext().setPrevious(None)
+                    self.head = current.getNext()
+                    current.setNext(None)
+                else:
+                    self.head = None
+                    self.tail = None
+                    
+                    
+                
+            elif (index == self.size - 1):
+                current = self.tail
+                current.getPrevious().setNext(None)
+                self.tail = current.getPrevious()
+                current.setPrevious(None)
+                self.size -=1
 
-After adding more print statements I saw that the code was running the imported module car.py.
 
-2.2.3 
-(Type your answers here )
+            else:  
+                while (x<index):
+                    current = current.getNext()
+                    x+=1
+                    
+                
+                current.getPrevious().setNext(current.getNext())
+                current.getNext().setPrevious(current.getPrevious())
+                self.size = self.size - 1
 
-When a module is imported the file runs which is why the print statements in a module will be seen in a seperate module.
+    def length(self):
+        return(self.size)
+                    
+    
+    def __getitem__(self,index):
+        x = 0
+        curr = self.head
+        while (x < index):
+            curr = curr.getNext()
+            x+=1
+        return(curr.getData())
 
-Question 2.3
-2.3.1
-(yes or no)
-no
-2.3.2
-(yes or no)
-yes
-2.3.3
-(type your answer here)
 
-"if name == main" makes it so the code will run in the file it is written in but when it is imported it will not run. 
 
-2.3.4
-(type your answer here)
 
-The value of name is equal to main in the file it is executed in but is not equal to main in a file it is imported in.
 
-Question 3.1 
-(type your answer here)
-
-The issue is the object does not have access to the function get make model which is in the parent class.
-The super function allows the object calls the constructor of the parent class and also gives access to the functions and attributes of the parent class.
+    def __str__(self):
+        stringToReturn = "List size: " + str(self.size)
+        current = self.head
+        while (current is not None):  
+            stringToReturn = stringToReturn + "\n\n" + str(current)
+            current = current.getNext()
+        return(stringToReturn)
+    
+if __name__ == "__main__":
+    l = LinkedList()
+    l.add(11)
+    l.add(17)
+    l.add(12)
+    print(l)
+    l.insert(3,15)
+    print(l)
