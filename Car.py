@@ -1,33 +1,25 @@
 class Car:
-    def __init__(self, make_model = "None assigned", num_doors = 4, max_passengers = 5):
-        self.make_model = make_model
-        self.num_doors = num_doors
-        self.max_passengers = max_passengers
+    def __init__(self, make_model:str = "none", num_doors:int = 4, max_passengers:int = 5):
+        self.makeModel = make_model
+        self.numDoors = num_doors
+        self.maxPassengers = max_passengers
 
-    def set_make_model(self, make_model):
-        self.make_model = make_model
-
-    def get_make_model(self):
-        return (self.make_model)
+    #getter methods
+    def getMakeAndModel(self) -> str:
+        return(self.makeModel)
     
-    def set_num_doors(self, num_doors):
-        self.num_doors = num_doors
-
-    def get_num_doors(self):
-        return (self.num_doors)
+    def getMaximumNumberOfPassengers    (self) -> int:
+        return(self.maxPassengers)
     
-    def set_max_passengers(self, max_passengers):
-        self.max_passengers = max_passengers
+    #setters
 
-    def get_max_passengers(self):
-        return (self.max_passengers) 
+    def setMakeAndModel(self,make_model:str):
+        self.makeModel = make_model
+  
+
+    def __str__(self):
+        stringToReturn = " make model: " + self.makeModel + "\n number of doors: " + str(self.numDoors) + "\n max passengers: " + str(self.maxPassengers)
+        return(stringToReturn)
     
-    def __str__(self) -> str:
-        return  f"Make and Model:{self.make_model}\nNumber of doors: {self.num_doors}\nMaximum number of passengers: {self.max_passengers}" 
-
-if __name__ == "__main__":
-    car1 = Car()
-    car1.set_make_model("Dodge Dart")
-    print("car")
-    print(car1.get_make_model())
-    print(car1)
+if __name__ == "__main__": 
+   pass
